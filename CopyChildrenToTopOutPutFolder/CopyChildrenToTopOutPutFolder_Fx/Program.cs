@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -8,17 +9,20 @@ namespace CopyChildrenToTopOutPutFolder_Fx
     {
         static void Main(string[] args)
         {
-            var ignoreFile = new[]
-            {
-                ".git",
-                ".gitkeep",
-                "CopyChildrenToTopOutPutFolder_Fx.exe",
-                "CopyChildrenToTopOutPutFolder_Fx.exe.config",
-                "CopyChildrenToTopOutPutFolder_Fx.pdb"
-            };
-
             try
             {
+                var currentExeName = Path.GetFileNameWithoutExtension(Process.GetCurrentProcess().MainModule.FileName);
+
+                var ignoreFile = new[]
+                {
+                    ".git",
+                    ".gitignore",
+                    ".gitkeep",
+                    $"{currentExeName}.exe",
+                    $"{currentExeName}.exe.config",
+                    $"{currentExeName}.pdb"
+                };
+
                 var basePath = AppDomain.CurrentDomain.BaseDirectory;
 
                 var outPutPath = Path.Combine(basePath, "OutPut");
