@@ -20,7 +20,9 @@ namespace CopyChildrenToTopOutPutFolder_Fx
                     ".gitkeep",
                     $"{currentExeName}.exe",
                     $"{currentExeName}.exe.config",
-                    $"{currentExeName}.pdb"
+                    $"{currentExeName}.pdb",
+                    "README.md",
+                    "readme.md"
                 };
 
                 var basePath = AppDomain.CurrentDomain.BaseDirectory;
